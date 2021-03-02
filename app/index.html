@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" id="root">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval';">
+
+    <!-- Titlebar text -->
+    <title>Sticks and Rocks</title>
+
+    <!-- Hide from search engines -->
+    <meta name="robots" content="noindex">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/main.css" type="text/css">
+
+    <!-- Library for perlin/simplex noise -->
+    <script defer src='scripts/perlin2.js'></script>
+
+    <!-- Library for music and sounds -->
+    <script defer src='scripts/audio-fx.js'></script>
+
+    <!-- Scripts for game -->
+    <script defer src="scripts/utils.js"></script>
+    <script defer src="scripts/sounds.js"></script>
+    <script defer src="scripts/ui.js"></script>    
+    <script defer src="scripts/worldgen.js"></script>
+    <script defer src="scripts/main.js"></script>
+</head>
+<body> <!-- onload="debugMode()" -->
+
+    <!-- 
+        Version info and debug screen 
+        The debug screen is hidden by default unless you run the 
+        debugMode() function (in JS)
+    -->
+    <p class="version">
+        Version 0.03-testing<br>
+        <span id="debug">
+            <span id="coords"></span><br>
+            <span id="framecount"></span><br>
+            <span id="inv"></span>
+        </span>
+    </p>
+    
+
+    <!-- Loading screen -->
+    <div class="main loading" id="loadingscreen">
+        <h1> Loading game... </h1>
+    </div>
+
+    <!-- Main Menu -->
+    <div class="main" id="menuscreen">
+
+        <!-- Menu title -->
+        <img class="logo pulse" ondragstart="return false;" src="assets/images/ui/titles/gametitle.png">
+
+        <!-- Menu content -->
+        <div class="panel">
+
+            <!-- Menu buttons -->
+            <img onclick="play()" ondragstart="return false;" onmouseover="select.play();removeButtonFocus()" class="button" id="play-button" src="assets/images/ui/buttons/play.png">
+            <img onclick="credits()" ondragstart="return false;" onmouseover="select.play();removeButtonFocus()" class="button" id="credits-button" src="assets/images/ui/buttons/credits.png">
+
+            <!-- Light grey text to teach the player the menu controls -->
+            <p class="tip">(ARROW KEYS TO SELECT)<br>(ENTER TO ACCEPT)<br>(Q TO RETURN)</p>
+        </div>
+    </div>
+
+    <!-- Credits -->
+    <div class="main" id="creditsscreen">
+
+        <!-- Menu title -->
+        <img class="credits" ondragstart="return false;" src="assets/images/ui/titles/credits.png">
+
+        <!-- Menu content (credits in this menu) -->
+        <div class="panel">
+            <p>Gameplay and art by Robin Boers</p>
+            <p>Sound effects from Minicraft</p>
+            <p>Audio library by jakesgordon</p>
+            <p>
+                Noise library by Stefan Gustavson and Peter Eastman<br>
+                Converted to Javascript by Joseph Gentle.<br>
+            </p>
+        </div>
+
+        <!-- Back button -->
+        <!-- <img class="button back" id="back-button" onmouseover="select.play();removeButtonFocus()" onclick="back()" ondragstart="return false;" src="assets/images/ui/buttons/back.png"> -->
+    </div>
+
+    <!-- The gamescreen itself -->
+    <div class="main" id="gamescreen">
+
+        <!-- Overlay used by css to create a effect of lighting (can change colors) -->
+        <div class="lighting overlay" id="overlay"></div>
+
+        <!-- Ui overlay, used to display UI elements-->
+        <div class="ui overlay">
+
+            <div class="ui-element inventory" id="inventory">
+                <div class="inventory-inner">
+                    <!-- <h2>Inventory</h2> -->
+
+                    <h3 class="inv-slot"><img src="assets/images/items/log.png"><span id="inv-wood"></span></h3>
+                    <h3 class="inv-slot"><img src="assets/images/items/rock.png"><span id="inv-stone"></span></h3>
+                </div>
+            </div>
+
+            <!-- Section to show controls for different screens -->
+            <img class="ui-element controls" ondragstart="return false;" src="assets/images/ui/control-maps/controls-gameplay.png">
+
+            <!-- Character display to show stats and health -->
+            <img class="ui-element map" ondragstart="return false;" src="assets/images/ui/stats/default.png">
+
+            <!-- The healthbar itself -->
+            <img class="ui-element healthbar" ondragstart="return false;" id="hpbar" src="assets/images/ui/healthbar/shield.png">
+
+        </div>
+
+        <!-- Gameover title -->
+        <h1 id="gameoverscreen">G4me 0v3r!</h1>
+
+        <!-- The player sprite -->
+        <img id="character" ondragstart="return false;" src="assets/images/sprites/animation/still.png">
+
+        <!-- Gamecanvas for drawing terrain -->
+        <canvas id="game"></canvas>
+    </div>
+</body>
+</html>

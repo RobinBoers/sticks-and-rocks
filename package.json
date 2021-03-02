@@ -1,0 +1,27 @@
+{
+  "name": "stick-and-rocks",
+  "version": "0.0.1",
+  "description": "Sticks and Rocks is a 2d sandbox game with infinite terrain to explore written in Javascript.",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm index.js",
+    "start": "electron ."
+  },
+  "keywords": [
+    "game",
+    "2d",
+    "topdown",
+    "exploration",
+    "combat",
+    "crafting",
+    "js",
+    "nodejs",
+    "Electron"
+  ],
+  "author": "Robin Boers",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^11.2.3"
+  },
+  "dependencies": {}
+}

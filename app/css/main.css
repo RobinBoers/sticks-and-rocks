@@ -1,0 +1,245 @@
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@700&display=swap');
+@font-face {
+    font-family: Arcade;
+    src: url(../assets/fonts/arcadeclassic.regular.ttf);
+}
+
+:root {
+    --overlay-color1: rgba(255,255,255,0);
+    --overlay-color2: #000000;
+    --circle-size: 75%;
+}
+
+html, body, .main {
+    font-family: 'Arcade', monospace;
+    font-size: 45px;
+    word-spacing: 15px;
+    /* font-family: 'IBM Plex Mono', monospace; */
+    height: 100%;
+    width: 100%;
+    color: white;
+    background-color: #272727;
+    text-align: center;
+    overflow: hidden;
+    image-rendering: auto;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+    margin: 0;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    position: relative;
+}
+
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+
+.version {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 3px;
+    z-index: 100;
+    margin:0;
+}
+
+.logo {
+    width: 40%;
+    margin: auto;
+    margin-top: 150px;
+    margin-bottom: 100px;
+}
+
+.credits {
+    width: 50%;
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
+.button {
+    cursor: pointer;
+    height: 100px;
+}
+
+.button:hover, .hover {
+    transform: scale(1.1); 
+}
+
+.loading {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+.back {
+    padding-top: 20px;
+}
+
+.tip {
+    color: #3A3A3A;
+}
+
+.inventory {
+    width: 100%;
+}
+
+.inventory-inner {
+    position: absolute;
+    width: 100%;
+    bottom: 20px;
+}
+
+.inventory h3 {
+    display: inline;
+    margin: 50px;
+}
+
+.inventory h2 {
+    margin-bottom: 15px;
+}
+
+.inv-slot img {
+    height: 30px;
+    padding-right: 30px;
+}
+
+#character {
+    position: absolute;
+    overflow:hidden;
+    z-index: 10;
+    top: 0;
+    left: 0;
+}
+
+#debug {
+     display: none;
+     text-align: left;
+}
+
+#gameoverscreen {
+    display: none;
+    position: absolute;
+    z-index: 20;
+    top: 25%;
+    right: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+
+canvas {
+    overflow: visible;
+    width: auto;
+    height: auto;
+    position: absolute;
+}
+
+.overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+}
+
+.lighting {
+    mix-blend-mode: multiply;
+    image-rendering: auto;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+    background: rgba(255, 255, 255, 0);
+    background: radial-gradient(circle, var(--overlay-color1) 0%, var(--overlay-color2) var(--circle-size));
+    animation: background 0.1s;
+}
+
+.ui {
+    z-index: 60;
+    height: 15%;
+    /* background-color: #7c7c7c;
+    border-top: 5px solid #272727; */
+    bottom: 0 !important;
+    overflow: visible;
+}
+
+.ui-element {
+    position: absolute;
+    height: 170%;
+    bottom: 0;
+    image-rendering: auto;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+    z-index: 55;
+}
+
+.controls {
+    right: 0;
+}
+
+.map {
+    left: 0;
+}
+
+.healthbar {
+    position: absolute;
+    height: 25%;;
+    bottom: 10px;
+    left: 5px;
+}
+
+.shake {
+    animation: shake 0.2s;
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    99% { transform: translate(1px, -2px) rotate(-1deg); }
+    100% { transform: none; }
+  }
+
+  .pulse {
+    -webkit-animation: puls 10s cubic-bezier(.46,.03,.52,.96);
+    -webkit-animation-iteration-count: infinite;
+    animation: pulse 10s cubic-bezier(.46,.03,.52,.96);
+        animation-iteration-count: 1;
+    animation-iteration-count: infinite;
+}
+
+
+@keyframes pulse {
+    0% {
+        transform: scale(1.1) rotate(-3deg);
+    }
+    25% {
+        transform: scale(1) rotate(0deg);
+    }
+    50% {
+        transform: scale(1.1) rotate(3deg);
+    }
+    75% {
+        transform: scale(1) rotate(0deg);
+    }
+    100% {
+        transform: scale(1.1) rotate(-3deg);
+    }
+}
